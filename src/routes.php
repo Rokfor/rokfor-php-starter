@@ -26,7 +26,7 @@ $app->get('/', function ($request, $response, $args) {
 }); 
 
 $app->get('/Book/{id:[0-9]*}', function ($request, $response, $args) {
-  $result = $this->api->get("books/".$args['id']);
+  $result = $this->api->get("books/".$args['id']."?populate=true");
   if($result->info->http_code == 200) {
        $args = $result->decode_response();
        $args['__rawData']   = print_r($args, true);

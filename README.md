@@ -25,6 +25,13 @@ Rokfor Website Boilerplate running on PHP using
 
 #### Connect to Rokfor Server
 
+If you check out the repository, the example will connect to the Rokfor Demo 
+Server. There is a read only access and some dummy content available just to make
+sure, the application runs.
+
+If you want to use the system for real, ping me (@uphofer) for an account or deploy your own
+Rokfor Server.
+
 Edit the settings.php File and set the corresponding keys for the Rokfor Server:
 
     'rokfor' => [
@@ -37,6 +44,10 @@ Edit the settings.php File and set the corresponding keys for the Rokfor Server:
 Now you can fire up a local PHP Server using the command:
 
     /usr/bin/php -S 0.0.0.0:8080 -t public public/index.php
+
+Probably you can just type
+
+    $ ./run-server.sh
 
 And open your Site in the Browser (http://localhost:8080)
 
