@@ -1,0 +1,37 @@
+{
+  "name": "rokfor-php-starter",
+  "description": "Rokfor PHP Starter Kit",
+  "main": "",
+  "authors": [
+    "Urs Hofer"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "rokfor",
+    "cms",
+    "api-first"
+  ],
+  "homepage": "https://github.com/Rokfor/rokfor-php-starter",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bourbon": "#v5.0.0.beta.6",
+    "font-awesome": "^4.6.3",
+    "neat": "^1.8.0",
+    "bitters": "^1.4.0"
+  }
+}

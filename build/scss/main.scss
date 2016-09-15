@@ -1,0 +1,11 @@
+/* Main SASS File */
+
+@import "../../bower_components/bourbon/core/bourbon";
+@import "../../bower_components/neat/app/assets/stylesheets/neat";
+@import "../../bower_components/bitters/core/base";
+
+section {
+  @include outer-container;
+  header { @include span-columns(3); }
+  section { @include span-columns(9); }
+}

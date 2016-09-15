@@ -1,0 +1,19 @@
+doctype html
+html
+  include parts/layout.meta.jade
+  body
+    section
+      h1
+        header='There are '.count($Books).' Books available.'
+    section
+      each book, index in Books
+        br
+        h5='Book '.($index+1).': '.$book[Name]
+        each chapter in book.Chapters
+          span='Chapter: '.$chapter[Name]
+          br
+  :php
+    | $dev = (PHP_SAPI == 'cli-server');
+  if dev
+    script(src="//localhost:35729/livereload.js")
+    

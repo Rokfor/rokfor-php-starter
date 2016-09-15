@@ -1,0 +1,13 @@
+doctype html
+html
+  include parts/layout.meta.jade
+  body
+    section
+      h4 Rokfor Application Error
+      p=($message ? $message : "Page not Found")
+      if $help
+        pre
+          span!=$help
+    section
+      hr
+        p <?=date('c')?>

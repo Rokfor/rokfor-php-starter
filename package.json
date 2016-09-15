@@ -1,0 +1,32 @@
+{
+  "name": "rokfor-php-starter",
+  "description": "Rokfor PHP Starter Kit",
+  "keywords": [
+    "rokfor",
+    "cms",
+    "api-first"
+  ],
+  "author": [
+    {
+      "name": "Urs Hofer",
+      "email": "inquiries@rokfor.ch",
+      "web": "http://cloud.rokfor.ch"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rokfor/rokfor-slim.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "~1.7.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1"
+  },
+  "homepage": "cloud.rokfor.ch"
+}
