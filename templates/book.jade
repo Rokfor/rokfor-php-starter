@@ -12,6 +12,11 @@ html
         span='Issue: '.$issue[Name]
         br
     section
+      p
+      hr
+      p Data Object from Server
+      pre=__rawData
+    section
       a(href="/") Go Back
   :php
     | $dev = (PHP_SAPI == 'cli-server');

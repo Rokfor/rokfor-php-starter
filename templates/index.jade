@@ -13,6 +13,11 @@ html
         each chapter in book.Chapters
           span='Chapter: '.$chapter[Name]
           br
+    section
+      p
+      hr
+      p Data Object from Server
+      pre=__rawData          
   :php
     | $dev = (PHP_SAPI == 'cli-server');
   if dev
