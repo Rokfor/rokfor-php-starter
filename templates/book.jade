@@ -1,0 +1,20 @@
+doctype html
+html
+  include parts/layout.meta.jade
+  body
+    section
+      h1
+        header='You selected Book '.$Books[0][Name]
+    section
+      br
+      p The following issues exist in this book
+      each issue in $Books[0][Issues]
+        span='Issue: '.$issue[Name]
+        br
+    section
+      a(href="/") Go Back
+  :php
+    | $dev = (PHP_SAPI == 'cli-server');
+  if dev
+    script(src="//localhost:35729/livereload.js")
+    

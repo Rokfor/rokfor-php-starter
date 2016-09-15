@@ -8,7 +8,8 @@ html
     section
       each book, index in Books
         br
-        h5='Book '.($index+1).': '.$book[Name]
+        h5
+          a(href="/Book/".$book[Id])='Book '.($index+1).': '.$book[Name]
         each chapter in book.Chapters
           span='Chapter: '.$chapter[Name]
           br
