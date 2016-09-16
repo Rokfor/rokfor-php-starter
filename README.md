@@ -23,14 +23,14 @@ Rokfor Website Boilerplate running on PHP using
     $ cd config
     $ cp settings.local.php settings.php
 
-#### Connect to Rokfor Server
+#### Connect to the Rokfor Server
 
 If you check out the repository, the example will connect to the Rokfor Demo 
 Server. There is a read only access and some dummy content available just to make
 sure, the application runs.
 
-If you want to use the system for real, ping me (@uphofer) for an account or deploy your own
-Rokfor Server.
+If you want to use the system for real, ping me [@uphofer](http://twitter.com/uphofer) 
+for an account or deploy your own [Rokfor Server](https://github.com/Rokfor/rokfor-slim).
 
 Edit the settings.php File and set the corresponding keys for the Rokfor Server:
 
