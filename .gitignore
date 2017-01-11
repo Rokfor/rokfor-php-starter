@@ -1,6 +1,7 @@
 node_modules
 bower_components
 vendor
+cache/.api_cache
 cache/*.php
 logs/app.log
 config/settings.php

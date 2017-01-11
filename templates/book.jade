@@ -19,7 +19,7 @@ html
     section
       a(href="/") Go Back
   :php
-    | $dev = (PHP_SAPI == 'cli-server');
+    $dev = (PHP_SAPI == 'cli-server');
   if dev
     script(src="//localhost:35729/livereload.js")
     

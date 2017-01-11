@@ -19,7 +19,7 @@ html
       p Data Object from Server
       pre=__rawData          
   :php
-    | $dev = (PHP_SAPI == 'cli-server');
+    $dev = (PHP_SAPI == 'cli-server');
   if dev
     script(src="//localhost:35729/livereload.js")
     

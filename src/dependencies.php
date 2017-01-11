@@ -1,5 +1,9 @@
 <?php
 
+function u($data) {
+  return urlencode(preg_replace('/ +/', '_', preg_replace('/[^A-Za-z0-9 ]/','',$data)));
+};
+
 $container = $app->getContainer();
 
 // Logger: Global, to be reached from the api decode callback
@@ -41,9 +45,36 @@ $container['api'] = function ($c) {
       'base_url' => $settings['endpoint'], 
       'headers' => ['Authorization' => 'Bearer '.$settings['ro-key']], 
   ]);
-  $api->register_decoder('json', function($data){
+
+  $api->register_cachechecker(function($hash, $key) use (&$c) {
+    if (file_exists($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/hash')) {
+      $_control = file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/hash');
+      if ($_control == $hash) {
+        $u = unserialize(file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/content'));
+        return $u;
+      }
+    }
+    return false;
+  });
+
+  $api->register_decoder('json', function($data, $caller) use (&$c) {
     $parsed = json_decode($data, TRUE);
-    $GLOBALS['logger']->info(print_r($parsed,true));
+    if ($caller->options['caching'] === true) {
+      $hash = $caller->headers->x_cache_hash;
+      $path = $c->get('settings')['view']['cache_path'].'/.api_cache';
+      // Create directory
+      if (!file_exists($path)) mkdir($path);
+      if (!file_exists($path.'/'.$hash)) mkdir($path.'/'.$hash);
+      // Store
+      file_put_contents($path.'/'.$hash.'/hash',    $parsed["Hash"]);
+      file_put_contents($path.'/'.$hash.'/content', serialize([
+        "Headers" => $caller->headers,
+        "Decoded" => $parsed,
+        "Info"    => $caller->info,
+        "Error"   => $caller->error
+      ]));
+    }
+    //$GLOBALS['logger']->info(print_r($parsed,true));
     return $parsed;
   });
   return $api;

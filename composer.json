@@ -16,13 +16,17 @@
         {
             "type": "vcs",
             "url": "https://github.com/urshofer/slim-jade"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/urshofer/php-restclient"
         }
     ],
     "require": {
         "php": ">=5.5.0",
         "slim/slim": "~3.0",
-        "jlndk/slim-jade": "dev-master",
-        "tcdent/php-restclient": "^0.1.5",
+        "jlndk/slim-jade": "dev-pug",
+        "tcdent/php-restclient": "dev-rokfor",
         "monolog/monolog": "^1.21"
     },
     "require-dev": {
