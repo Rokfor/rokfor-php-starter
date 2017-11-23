@@ -27,6 +27,7 @@
         "slim/slim": "~3.0",
         "tcdent/php-restclient": "dev-rokfor",
         "monolog/monolog": "^1.21",
+        "jlndk/slim-jade": "dev-pug",        
         "pug-php/pug": "^2.7"
     },
     "require-dev": {
