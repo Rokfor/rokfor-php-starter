@@ -42,8 +42,8 @@ $container['notFoundHandler'] = function ($c) {
 $container['api'] = function ($c) {
   $settings = $c->get('settings')['rokfor'];
   $api = new RestClient([
-      'base_url' => $settings['endpoint'], 
-      'headers' => ['Authorization' => 'Bearer '.$settings['ro-key']], 
+      'base_url' => $settings['endpoint'],
+      'headers' => ['Authorization' => 'Bearer '.$settings['ro-key']],
   ]);
 
   $api->register_cachechecker(function($hash, $key) use (&$c) {
@@ -75,6 +75,7 @@ $container['api'] = function ($c) {
       ]));
     }
     //$GLOBALS['logger']->info(print_r($parsed,true));
+
     return $parsed;
   });
   return $api;

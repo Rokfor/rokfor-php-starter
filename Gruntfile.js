@@ -18,11 +18,6 @@ module.exports = function(grunt) {
       },
       build: {
         src: ['bower_components/jquery/dist/jquery.js',
-              'bower_components/hammerjs/hammer.js',
-              'bower_components/slick-carousel/slick/slick.js',
-              'bower_components/dense/src/dense.js',        
-              'bower_components/jquery-unveil/jquery.unveil.min.js',        
-              'bower_components/datatables.net/js/jquery.dataTables.js',
               'build/js/*.js'
         ],
         dest: 'public/assets/js/main.js'

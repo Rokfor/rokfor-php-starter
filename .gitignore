@@ -7,3 +7,4 @@ logs/app.log
 config/settings.php
 .DS_Store
 .sass-cache
+.phpintel
