@@ -13,6 +13,7 @@ return [
         'view' => [                                             // Jade Renderer settings
           'template_path' => __DIR__ . '/../templates/',        // Path to templates
           'cache_path'    => __DIR__ . '/../cache/',            // Path to cache dir
+          'cache_timecheck_offset' => 86400,                    // Time to recheck cached calls (only )          
         ],
         'logger' => [                                           // Monolog settings
           'path'          => false,                             // Path to Log File. 

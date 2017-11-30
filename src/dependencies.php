@@ -47,12 +47,25 @@ $container['api'] = function ($c) {
   ]);
 
   $api->register_cachechecker(function($hash, $key) use (&$c) {
-    if (file_exists($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/hash')) {
-      $_control = file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/hash');
-      if ($_control == $hash) {
-        $u = unserialize(file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/content'));
-        return $u;
+    if ($hash === "timebased") {
+      if (file_exists($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/time')) {
+        $_timecheck = file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/time');
+        $_control   = (time() - $_timecheck) < ($c->get('settings')['view']['cache_timecheck_offset'] ? $c->get('settings')['view']['cache_timecheck_offset'] : 86400)
+                        ? $hash
+                        : false;
       }
+    }
+    else {
+      if (file_exists($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/hash')) {
+        $_control = file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/hash');
+      }
+      else {
+        return false;
+      }
+    }
+    if ($_control == $hash) {
+      $u = unserialize(file_get_contents($c->get('settings')['view']['cache_path'].'/.api_cache/'.$key.'/content'));
+      return $u;
     }
     return false;
   });
@@ -60,13 +73,14 @@ $container['api'] = function ($c) {
   $api->register_decoder('json', function($data, $caller) use (&$c) {
     $parsed = json_decode($data, TRUE);
     if ($caller->options['caching'] === true) {
-      $hash = $caller->headers->x_cache_hash;
+      $hash = $caller->_timestamp_hash ? $caller->_timestamp_hash : $caller->headers->x_cache_hash;
       $path = $c->get('settings')['view']['cache_path'].'/.api_cache';
       // Create directory
       if (!file_exists($path)) mkdir($path);
       if (!file_exists($path.'/'.$hash)) mkdir($path.'/'.$hash);
       // Store
       file_put_contents($path.'/'.$hash.'/hash',    $parsed["Hash"]);
+      file_put_contents($path.'/'.$hash.'/time',    time());
       file_put_contents($path.'/'.$hash.'/content', serialize([
         "Headers" => $caller->headers,
         "Decoded" => $parsed,
@@ -75,7 +89,6 @@ $container['api'] = function ($c) {
       ]));
     }
     //$GLOBALS['logger']->info(print_r($parsed,true));
-
     return $parsed;
   });
   return $api;
