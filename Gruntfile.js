@@ -25,23 +25,24 @@ module.exports = function(grunt) {
     },
 
     copy: {
-  	  images: {
-  		  expand: true,
+      images: {
+        expand: true,
+        flatten: false,
+        cwd: 'build/img',
+        src: [
+          '**'
+        ], 
+        dest: 'public/assets/img'
+      },
+      fonts: {
+        expand: true,
         flatten: true,
-  		  src: [
-          'build/img/*'
-  		  ], 
-  		  dest: 'public/assets/img'
-  	  },
-  	  fonts: {
-  		  expand: true,
-        flatten: true,
-  		  src: [
-          'bower_components/font-awesome/fonts/*'
-  		  ], 
-  		  dest: 'public/assets/fonts'
-  	  }
-	  },
+        src: [
+          'build/fonts/*'
+        ], 
+        dest: 'public/assets/fonts'
+      }
+    },
 
     postcss: {
         options: {
